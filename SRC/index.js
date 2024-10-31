@@ -1,19 +1,4 @@
-const fs = require('fs');
-const trataErros = require('./erros');
-
-const arquivo = process.argv;
-const link = arquivo[2];
-
-fs.readFile(link, 'utf-8', (erro, texto) => {
-    try{
-        if(erro) throw erro;
-        contaPalavras(texto);
-    }catch(erro){       
-        console.log(trataErros(erro));
-    }
-})
-
-function contaPalavras(texto){
+export function contaPalavras(texto){
     const paragrafos = extraiparagrafos(texto)
     const contagem = paragrafos.flatMap((paragrafo) => {
         if(!paragrafo) return [];
@@ -36,10 +21,8 @@ function palavraDuplicada(texto){
     listaPalavras.forEach(palavra => {
         if(palavra.length >= 3){
             const palavraLimpa = limpaPalavras(palavra);
-            result[palavraLimpa] = (result[palavraLimpa] || 0) + 1; 
+            result[palavraLimpa] = (result[palavraLimpa] || 0) + 1;
         }
     });
     return result;
 }
-
-console.log(link);

@@ -1,4 +1,4 @@
-function trataErros(erro){
+export default function trataErros(erro){
     if(erro.code === 'ENOENT'){
         // Usado para mostrar os detalhesa do erro:
         // throw new Error(`Arquivo não encontrado: ${erro.path}`);
@@ -9,4 +9,4 @@ function trataErros(erro){
     }
 }
 
-module.exports = trataErros;
+  
